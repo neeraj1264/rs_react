@@ -1,0 +1,21 @@
+.address h2{
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--skyblue);
+    box-shadow: 5px 5px 5px var(--shadow);
+    width: fit-content;
+    margin: 3rem auto;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+}
+.address .map h4{
+    padding: 2rem 0;
+}
+.address .map{
+    border: 1px solid #333333;
+    box-shadow: 5px 5px 10px black;
+    text-align: center;
+    display: block;
+    margin: 1rem 5%;
+    padding: .4rem;
+}
