@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 function calculateTimeDifference(targetDate) {
   const now = new Date().getTime();
   const distance = targetDate.getTime() - now;
@@ -14,24 +13,30 @@ function convertTime(milliseconds) {
   return { days, hours, minutes, seconds };
 }
 
-function Timer({ targetDate, elementId }) {
-  const [remainingTime, setRemainingTime] = useState(calculateTimeDifference(targetDate));
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const distance = calculateTimeDifference(targetDate);
-      setRemainingTime(distance);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [targetDate]);
-
-  if (remainingTime <= 0) {
-    return <p id={elementId}>Loading...</p>;
-  }
-
-  const { days, hours, minutes, seconds } = convertTime(remainingTime);
-
+function Timer({ targetDate, elementId, onTimerExpire }) {
+    const [remainingTime, setRemainingTime] = useState(calculateTimeDifference(targetDate));
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        const distance = calculateTimeDifference(targetDate);
+        setRemainingTime(distance);
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, [targetDate]);
+  
+    useEffect(() => {
+      if (remainingTime <= 0 && onTimerExpire) {
+        onTimerExpire();
+      }
+    }, [remainingTime, onTimerExpire]);
+  
+    if (remainingTime <= 0) {
+      return <p id={elementId}>Satsang Start...</p>;
+    }
+  
+    const { days, hours, minutes, seconds } = convertTime(remainingTime);
+  
   return (
     <div>
       <p id={elementId}>
