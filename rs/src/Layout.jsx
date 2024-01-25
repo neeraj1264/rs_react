@@ -1,15 +1,13 @@
 import Header from './components/header/Header';
-import Banner from './components/banner/Banner';
-import Timing from './components/satsang/Timing';
-import AddressSection from './components/address/AddressSection';
+import { Outlet } from 'react-router';
+import Footer from './components/footer/Footer';
 function Layout() {
 
     return (
      <>
      <Header/>
-     <Banner/>
-     <Timing/>
-     <AddressSection/>
+     <Outlet/>
+     <Footer/>
      </>
     )
   }

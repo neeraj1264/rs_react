@@ -1,9 +1,9 @@
 // YourComponent.jsx or YourComponent.tsx
 import React, { useState, useEffect } from "react";
-import "./Satsang_video.css";
+import "./Shabad.css";
 import axios from "axios";
 
-const Satsang_video = () => {
+const Shabad = () => {
   const [jsonData, setJsonData] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Satsang_video = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/src/components/satsang/Satsang.json");
+      const response = await axios.get("/src/components/shabad/Shabad.json");
       setJsonData(response.data);
       console.log("Fetched data:", response.data);
     } catch (error) {
@@ -22,13 +22,12 @@ const Satsang_video = () => {
 
   return (
     <>
-      <h2 className="section-head">Satsang Videos</h2>
-      <section className="satsang-section bg-dark" id="satsang">
-        <div className="satsangm">
+      <h2 className="section-head">Shabad Videos</h2>
+      <section className="shabad-section bg-dark" id="shabad">
+        <div className="shabadm">
           {jsonData &&
             jsonData.map((item) => (
               <div key={item.iframe} className="satsang-video">
-                {/* Embed iframe */}
                 <iframe
                   width="350"
                   height="200"
@@ -41,9 +40,6 @@ const Satsang_video = () => {
 
                 {/* Title (h4) */}
                 <h4 style={{ whiteSpace: "pre-line" }}>{item.h4}</h4>
-
-                {/* Date (p) */}
-                <p>{item.p}</p>
               </div>
             ))}
         </div>
@@ -52,4 +48,4 @@ const Satsang_video = () => {
   );
 };
 
-export default Satsang_video;
+export default Shabad;

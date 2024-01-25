@@ -1,4 +1,5 @@
 import React from 'react'
+import Timing from '../satsang/Timing'
 
 function Banner() {
   return (
@@ -29,6 +30,7 @@ function Banner() {
     <span className="visually-hidden">Next</span>
   </button>
 </div>
+<Timing/>
     </>
   )
 }
